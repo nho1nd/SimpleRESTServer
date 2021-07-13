@@ -14,13 +14,13 @@ def start_service():
     #connect(out_tag, http resource, class object with handler, event handler name, what type of HTTP request to serve)
     dispatcher.connect('dict_get_key','/dictionary/:key', controller=dictionaryController, action='GET_KEY', conditions=dict(method=['GET']))
     #get_index
-    dispatcher.connect('dict_get_all','/dictionary/', controller=dictionaryController, action='GET_INDEX', conditions=dict(method=['GET']))
+    dispatcher.connect('dict_get_index','/dictionary/', controller=dictionaryController, action='GET_INDEX', conditions=dict(method=['GET']))
     #delete_key
     dispatcher.connect('dict_delete_key','/dictionary/:key', controller=dictionaryController, action='DELETE_KEY', conditions=dict(method=['DELETE']))
     #delete_index
-    dispatcher.connect('dict_delete_all','/dictionary/', controller=dictionaryController, action='DELETE_INDEX', conditions=dict(method=['DELETE']))
+    dispatcher.connect('dict_delete_index','/dictionary/', controller=dictionaryController, action='DELETE_INDEX', conditions=dict(method=['DELETE']))
     #post_index
-    dispatcher.connect('dict_post_new','/dictionary/', controller=dictionaryController, action='POST_INDEX', conditions=dict(method=['POST']))
+    dispatcher.connect('dict_post_index','/dictionary/', controller=dictionaryController, action='POST_INDEX', conditions=dict(method=['POST']))
     #put_index
     dispatcher.connect('dict_put_key','/dictionary/:key', controller=dictionaryController, action='PUT_KEY', conditions=dict(method=['PUT']))
     #connect more resources to event handlers here
@@ -33,7 +33,7 @@ def start_service():
     conf = {
         'global' : {
             'server.socket_host' : 'localhost', #'student04.cse.nd.edu',
-            'server.socket_port' : 510XX,
+            'server.socket_port' : 51027,
             },
         '/' : {
             'request.dispatch' : dispatcher,

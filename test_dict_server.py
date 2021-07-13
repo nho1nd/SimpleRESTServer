@@ -4,7 +4,7 @@ import json
 
 class TestCherrypyPrimer(unittest.TestCase):
 
-        SITE_URL = 'http://localhost:510XX' #'http://student04.cse.nd.edu:510XX' #Replace this your port number and machine
+        SITE_URL = 'http://localhost:51027' #'http://student04.cse.nd.edu:510XX' #Replace this your port number and machine
         DICT_URL = SITE_URL + '/dictionary/'
 
         def reset_data(self):

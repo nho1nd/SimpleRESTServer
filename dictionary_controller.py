@@ -35,6 +35,7 @@ class DictionaryController(object):
             output['message'] = str(ex)
 
         return json.dumps(output)
+   
 
     def PUT_KEY(self, key):
         output = {'result':'success'}
@@ -65,7 +66,7 @@ class DictionaryController(object):
         
         return json.dumps(output)
 
-    def POST(self):
+    def POST_INDEX(self):
         output = {'result':'success'}
         #extract msg from body
         data = cherrypy.request.body.read()
@@ -81,15 +82,27 @@ class DictionaryController(object):
 
         return json.dumps(output)
 
-    def GET(self):
+    def GET_INDEX(self):
         try:
             temp = []
             for key, value in self.myd.items():
                 temp.append({'key': key, 'value': value})
             
-            output = {'entries': temp, 'result': 'success'}
+            output = {'result': 'success', 'entries': temp}
         except KeyError as ex:
             output['result'] = 'error'
             output['message'] = str(ex)
 
+        return json.dumps(output)
+
+    def DELETE_INDEX(self):
+        output = {'result':'success'}
+        
+        try:
+            for key, value in self.myd.items():
+                del self.myd[key]
+        except Exception as ex:
+            output['result'] = 'error'
+            output['message'] = str(ex)
+        
         return json.dumps(output)
