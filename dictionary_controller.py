@@ -60,6 +60,9 @@ class DictionaryController(object):
         
         try:
             del self.myd[key]
+        except KeyError as ex:
+            output['result'] = 'error'
+            output['message'] = 'key not found'
         except Exception as ex:
             output['result'] = 'error'
             output['message'] = str(ex)
@@ -97,10 +100,11 @@ class DictionaryController(object):
 
     def DELETE_INDEX(self):
         output = {'result':'success'}
-        
         try:
-            for key, value in self.myd.items():
+            #for key, value in self.myd.items():
+            for key, value in list(self.myd.items()):
                 del self.myd[key]
+            output['result'] = 'success'
         except Exception as ex:
             output['result'] = 'error'
             output['message'] = str(ex)
